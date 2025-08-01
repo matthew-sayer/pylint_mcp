@@ -1,0 +1,8 @@
+{
+    "servers": {
+        "MCP_QUICK_START": {
+            "type": "sse",
+            "url": "http://localhost:8000/sse"
+        }
+    }
+}
