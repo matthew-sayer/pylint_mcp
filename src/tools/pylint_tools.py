@@ -1,9 +1,9 @@
 from shared_mcp_object import mcp
 from config import *
-from tools.pylint_core import PylintInput
+from pylint_core import PylintSubprocess
 
 @mcp.tool()
-async def run_pylint_command(path: str, options: str = ""):
+async def run_local_pylint_command(path: str, options: str = ""):
     """
     Run pylint on a Python file with specified options.
     
@@ -23,6 +23,6 @@ async def run_pylint_command(path: str, options: str = ""):
         result: The pylint command execution result.
     """
 
-    result = PylintInput().run_pylint_command(path, options)
+    result = PylintSubprocess(path, options).run_pylint_subprocess()
 
     return result
