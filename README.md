@@ -1,3 +1,5 @@
+![Pylint MCP Server Logo](assets/pylint_mcp_logo.png)
+
 # Pylint MCP Server
 
 A Model Context Protocol (MCP) server that provides Pylint code analysis capabilities through MCP tools.
@@ -13,10 +15,9 @@ This project provides an MCP server specifically designed for Python code analys
 
 ## Features
 
-- **Organised Structure**: Clear separation of tools, resources, and configuration
-- **Auto-Discovery**: Automatically registers all Python modules in the `tools/` directory
 - **Pylint Analysis Tool**: Run Pylint with custom options on any Python file
 - **Subprocess Execution**: Safe execution of Pylint commands through subprocess calls
+- **Auto-Discovery**: Automatically registers all Python modules in the `tools/` directory
 
 ## Project Structure
 
