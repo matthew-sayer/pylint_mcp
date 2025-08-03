@@ -1,9 +1,8 @@
 from shared_mcp_object import mcp
-from config import *
-from pylint_core import PylintSubprocess
+from pylint_core import PylintUniverseCommandFactory
 
 @mcp.tool()
-async def run_local_pylint_command(path: str, options: str = ""):
+async def run_pylint_cmd(path: str, options: str = ""):
     """
     Run pylint on a Python file with specified options.
     
@@ -23,6 +22,20 @@ async def run_local_pylint_command(path: str, options: str = ""):
         result: The pylint command execution result.
     """
 
-    result = PylintSubprocess(path, options).run_pylint_subprocess()
+    result = PylintUniverseCommandFactory("pylint", path, options).run_code_quality_tool()
+    return result
 
+@mcp.tool()
+async def run_symilar_cmd(path: str, options: str = ""):
+    """
+    Run Symilar on a Python file with specified options."""
+
+    result = PylintUniverseCommandFactory("symilar", path, options).run_code_quality_tool()
+    return result
+
+@mcp.tool()
+async def run_pyreverse_cmd(path: str, options: str = ""):
+    """
+    Run Pyreverse on a Python file with specified options."""
+    result = PylintUniverseCommandFactory("pyreverse", path, options).run_code_quality_tool()
     return result
