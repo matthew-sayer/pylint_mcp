@@ -1,12 +1,11 @@
-from dataclasses import dataclass
-import pylint as pl
+import shlex
 
 
 class PylintCommand:
     """Class to build pylint arguments"""
     def __init__(self, path: str, options: str = ""):
         self.path = path
-        self.options = options
+        self.options = shlex.split(options) if options else []
 
 class PylintSubprocess(PylintCommand):
     """Class to enable usage of pylint commands via CLI execution."""
@@ -15,7 +14,7 @@ class PylintSubprocess(PylintCommand):
         """Runs a pylint cmd through a subprocess"""
         import subprocess
 
-        command = ["uv", "run", "pylint"] + [self.options] + [self.path]
+        command = ["uv", "run", "pylint"] + self.options + [self.path]
 
         try:
             result = subprocess.run(
