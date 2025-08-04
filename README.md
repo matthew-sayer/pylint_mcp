@@ -4,10 +4,10 @@
 
 A Model Context Protocol (MCP) server that provides comprehensive Python code analysis capabilities through MCP tools, including Pylint, Symilar, and Pyreverse.
 
-Now, you can:
-- Run a full test report on any directory in one tool run, without needing to remember the options syntax - let the language model handle all of that.
-- Get a quick view on what to improve in your code, and letting the language model in your MCP client advise you on best practice.
-- Run pylint universe tools on repositories you do not have open in your IDE, and that do not have pylint installed in their environment.
+**With pylint_mcp, you can:**
+- **Run a full test report on any directory in one tool run**, without needing to remember the options syntax - let the language model handle all of that.
+- Get a quick view on what to improve in your code, and letting the language model in your MCP client **advise you on best practice**.
+- Run pylint universe tools on any locally cloned repository, without even opening the repo in your IDE or installing pylint in each environment.
 
 ## Overview
 
