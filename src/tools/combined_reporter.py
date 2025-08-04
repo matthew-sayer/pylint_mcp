@@ -1,5 +1,5 @@
 from shared_mcp_object import mcp
-from pylint_core import PylintUniverseCommandFactory, LocalDirectoryReader
+from pylint_core import PylintUniverseCommandFactory
 
 @mcp.tool()
 def run_full_report(path: str, pylint_options: str = "", symilar_options: str = ""):

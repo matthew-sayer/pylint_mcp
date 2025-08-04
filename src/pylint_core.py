@@ -62,7 +62,7 @@ class PylintUniverseCommandFactory(PylintUniverseCommandBuilder):
         self.runner = CommandRunner()
 
     def run_code_quality_tool(self):
-        command = ["uv", "run", self.tool_name] + self.options + [self.path]
+        command = ["uv", "run", self.tool_name, "-j", "0"] + self.options + [self.path]
         return self.runner.run_subprocess(command, capture_output=True, text=True, timeout=60)
     
     def run_similarity_checker(self):
