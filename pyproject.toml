@@ -1,7 +1,7 @@
 [project]
-name = "mcp_quick_start_py"
+name = "pylint_mcp"
 version = "0.1.0"
-description = "The MCP quick start repo is to help make a start at MCP development, with an example tool already created. "
+description = "A Model Context Protocol (MCP) server that provides Pylint code analysis capabilities through MCP tools."
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [

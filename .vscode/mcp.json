@@ -1,6 +1,6 @@
 {
     "servers": {
-        "MCP_QUICK_START": {
+        "PYLINT_MCP": {
             "type": "sse",
             "url": "http://localhost:8000/sse"
         }
