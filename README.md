@@ -114,9 +114,9 @@ To add a new tool:
 3. Use the `@mcp.tool()` decorator to register your function
 4. The tool will be automatically discovered and registered when the server starts
 
-## Command Options
+## Command Option EXAMPLES - your MCP client will take all of the possible options in context from the docstrings on each tool.
 
-### Pylint Options
+### Pylint Option Examples
 - `--disable=C0114`: Disable missing module docstring warnings
 - `--max-line-length=100`: Set maximum line length
 - `--output-format=json`: Output results in JSON format
