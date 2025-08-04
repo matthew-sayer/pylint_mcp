@@ -31,7 +31,7 @@ This project provides an MCP server specifically designed for Python code analys
 - **Auto-Discovery**: Automatically registers all Python modules in the `tools/` directory
 - **Remote Repository Support**: (Planned) analyse GitHub repositories without local cloning
 
-**NOTE** - For better performance, I recommend running the tools on individual subdirectories one at a time and working through each. A parallel execution flag is auto-added on pylint run commands.
+**NOTE** - For better performance, I recommend running the tools on individual subdirectories one at a time and working through each. In future, a parallel execution flag will be auto-added on pylint run commands.
 
 ## Project Structure
 
