@@ -9,6 +9,8 @@ A Model Context Protocol (MCP) server that provides comprehensive Python code an
 - Get a quick view on what to improve in your code, and letting the language model in your MCP client **advise you on best practice**.
 - Run pylint universe tools on any locally cloned repository, without even opening the repo in your IDE or installing pylint in each environment.
 
+**NOTE** - For optimal performance, I recommend running the tools on individual subdirectories one at a time and working through each. In future, a parallel execution flag will be auto-added on pylint run commands.
+
 ## Overview
 
 This project provides an MCP server specifically designed for Python code analysis using the complete Pylint universe of tools. It includes:
@@ -30,8 +32,6 @@ This project provides an MCP server specifically designed for Python code analys
 - **Subprocess Execution**: Safe execution of analysis commands through subprocess calls
 - **Auto-Discovery**: Automatically registers all Python modules in the `tools/` directory
 - **Remote Repository Support**: (Planned) analyse GitHub repositories without local cloning
-
-**NOTE** - For better performance, I recommend running the tools on individual subdirectories one at a time and working through each. In future, a parallel execution flag will be auto-added on pylint run commands.
 
 ## Project Structure
 
