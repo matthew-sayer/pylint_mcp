@@ -1,0 +1,12 @@
+@startuml packages
+set namespaceSeparator none
+package "src" as src #77AADD {
+}
+package "src.main" as src.main #77AADD {
+}
+package "src.pylint_core" as src.pylint_core #77AADD {
+}
+package "src.shared_mcp_object" as src.shared_mcp_object #77AADD {
+}
+src.main --> src.shared_mcp_object
+@enduml
