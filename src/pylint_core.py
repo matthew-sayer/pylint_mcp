@@ -1,9 +1,20 @@
+"""
+Core classes for building and executing Pylint universe commands.
+This module provides functionality for running pylint, pyreverse, and symilar tools.
+"""
+
+import logging
+import shlex
+import subprocess
+import os
+
 #Core class to build pylint universe commands, incl. pylint, pyreverse and symilar
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
 
 class PylintUniverseCommandBuilder:
     """Class to build pylint or pyreverse arguments"""
     def __init__(self, path: str, options: str):
-        import shlex
         self.path = path
         self.options = shlex.split(options) if options else []
 
@@ -12,18 +23,21 @@ class PylintUniverseCommandBuilder:
 class CommandRunner:
     """Runs commands in a subprocess"""
     def run_subprocess(self, command: list, capture_output = True, text = True, timeout = 60):
-        import subprocess
         try:
             result = subprocess.run(command,
                                     capture_output = capture_output,
                                     text = text,
                                     timeout = timeout
                                     )
+            logger.info("Running command: %s", ' '.join(command))
             return result
         except subprocess.CalledProcessError as e:
-            print(f"Error occurred while running command: {e}")
+            logger.error("Error occurred while running command: %s", e)
             return {"error": str(e)}
-        
+        except subprocess.TimeoutExpired as e:
+            logger.error("Command timed out: %s", e)
+            return {"error": "Command timed out"}
+
 #Dir readers
 
 class DirectoryReaderBaseClass:
@@ -34,14 +48,13 @@ class DirectoryReaderBaseClass:
 class LocalDirectoryReader(DirectoryReaderBaseClass):
     """Read local directory of choice"""
     def read_python_modules(self):
-        import os
         python_modules = []
 
         if os.path.isfile(self.path):
             return [self.path]
-        
+
         if os.path.isdir(self.path):
-            for root, dir, files in os.walk(self.path):
+            for root, dirs, files in os.walk(self.path):
                 for file in files:
                     if file.endswith(".py"):
                         python_modules.append(os.path.join(root, file))
@@ -52,7 +65,7 @@ class GitRepoDirectoryReader(DirectoryReaderBaseClass): # Planning to enable rem
     pass
 
 #Pylint command factory
-        
+
 class PylintUniverseCommandFactory(PylintUniverseCommandBuilder):
     """Runs pylint, Pyreverse or Symilar commands"""
 
@@ -62,10 +75,14 @@ class PylintUniverseCommandFactory(PylintUniverseCommandBuilder):
         self.runner = CommandRunner()
 
     def run_code_quality_tool(self):
-        command = ["uv", "run", self.tool_name, "-j", "0"] + self.options + [self.path]
+        """Runs the pylint or pyreverse cmds depending on tool name var"""
+        command = ["uv", "run", self.tool_name] + self.options + [self.path]
         return self.runner.run_subprocess(command, capture_output=True, text=True, timeout=60)
     
     def run_similarity_checker(self):
+        """Runs symilar, it can take a list of python files.
+        The structure differs from pylint and pyreverse.
+        Symilar cannot handle directories natively"""
         python_files = LocalDirectoryReader(self.path).read_python_modules()
         command = ["uv", "run", "symilar"] + self.options + python_files
         return self.runner.run_subprocess(command, capture_output=True, text=True, timeout=60)
