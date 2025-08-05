@@ -2,7 +2,7 @@ import os
 import importlib
 from mcp.server.fastmcp import FastMCP
 
-mcp = FastMCP("MCP_QUICK_START")
+mcp = FastMCP("PYLINT_MCP")
 
 RESOURCES_DIR = os.path.join(os.path.dirname(__file__), 'resources')
 TOOLS_DIR = os.path.join(os.path.dirname(__file__), 'tools')
@@ -25,7 +25,7 @@ def register_all_tools():
                 if base_dir not in sys.path:
                     sys.path.insert(0, base_dir)
                 
-                module = importlib.import_module(f'tools.{module_name}')
+                importlib.import_module(f'tools.{module_name}')
                 
                 print(f"Loaded module: tools.{module_name}")
                 registered += 1
