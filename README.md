@@ -11,6 +11,8 @@ A Model Context Protocol (MCP) server that provides comprehensive Python code an
 
 **NOTE** - For optimal performance, I recommend running the tools on individual subdirectories one at a time and working through each. In future, a parallel execution flag will be auto-added on pylint run commands.
 
+<img width="660" height="802" alt="image" src="https://github.com/user-attachments/assets/e014c417-794c-4f04-a561-f080938a79a2" />
+
 ## Overview
 
 This project provides an MCP server specifically designed for Python code analysis using the complete Pylint universe of tools. It includes:
