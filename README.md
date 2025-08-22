@@ -64,6 +64,8 @@ src/
 3. **Connect via MCP**: Configure your MCP client to connect to `http://localhost:8000/mcp`
 
 If using Github Copilot, you can create a folder in your PROJECT ROOT DIRECTORY called .vscode, and then put an mcp.json file in there. Then, paste the following into that:
+
+```
 {
     "servers": {
         "PYLINT_MCP": {
@@ -72,7 +74,7 @@ If using Github Copilot, you can create a folder in your PROJECT ROOT DIRECTORY 
         }
     }
 }
-
+```
 
 ## Available Tools
 
