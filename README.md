@@ -2,7 +2,7 @@
 
 # Pylint MCP Server
 
-A Model Context Protocol (MCP) server that provides comprehensive Python code analysis capabilities through MCP tools, including Pylint, Symilar, and Pyreverse.
+A Model Context Protocol (MCP) server that provides comprehensive Python code analysis capabilities through MCP tools, including Pylint, Symilar, and Pyreverse. It runs using streamable-http, which is supported by MS Teams Apps, and other popular MCP clients such as Github Copilot.
 
 ## Overview
 
@@ -52,7 +52,18 @@ src/
    uv run fastapi dev main.py
    ```
 
-3. **Connect via MCP**: Configure your MCP client to connect to `http://localhost:8000/sse`
+3. **Connect via MCP**: Configure your MCP client to connect to `http://localhost:8000/mcp`
+
+If using Github Copilot, you can create a folder in your PROJECT ROOT DIRECTORY called .vscode, and then put an mcp.json file in there. Then, paste the following into that:
+{
+    "servers": {
+        "PYLINT_MCP": {
+            "type": "sse",
+            "url": "http://localhost:8000/mcp"
+        }
+    }
+}
+
 
 ## Available Tools
 
