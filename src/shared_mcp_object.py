@@ -2,7 +2,7 @@ import os
 import importlib
 from mcp.server.fastmcp import FastMCP
 
-mcp = FastMCP("PYLINT_MCP")
+mcp = FastMCP("PYLINT_MCP", host="0.0.0.0", port=8000, mount_path="/mcp")
 
 RESOURCES_DIR = os.path.join(os.path.dirname(__file__), 'resources')
 TOOLS_DIR = os.path.join(os.path.dirname(__file__), 'tools')
